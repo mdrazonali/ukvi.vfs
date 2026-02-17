@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* stylelint-disable-next-line at-rule-no-unknown */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Set base paragraph font size to 14px as requested */
+p {
+  font-size: 14px;
+}
+
+/* Custom structural classes for easier theming */
+.app-root {
+  min-height: 100vh;
+}
+
+.site-header {
+  background: #fff;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-content {
+  display: flex;
+  gap: 4rem;
+  padding: 2rem;
+}
+
+.left-col {
+  width: 40%;
+  border: 1.5px solid #c1c1c1;
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* Form input styles (left column) per provided Cloudflare-like design */
+.left-col input,
+.left-col select,
+.left-col textarea {
+  border: 1px solid #5F717D;
+  border-radius: .375rem;
+  display: block;
+  width: 100%;
+  padding: .6rem .75rem;
+  font-size: .9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #3c4043;
+  background-color: #fff;
+  background-clip: padding-box;
+  appearance: none;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  box-sizing: border-box;
+}
+
+.left-col input:focus,
+.left-col select:focus,
+.left-col textarea:focus {
+  outline: none;
+  border-color: #06345b;
+  box-shadow: 0 0 0 0.15rem rgba(6,52,91,0.08);
+}
+
+/* Button styles for form actions */
+.btn-outline-vfs {
+  color: #d1470b;
+  border: 1.5px solid #d1470b;
+  background: #ffffff;
+  padding: .5rem .75rem;
+  border-radius: .375rem;
+  display: inline-block;
+  transition: background .15s ease-in-out, color .15s ease-in-out;
+}
+.btn-outline-vfs:hover {
+  background: #d1470b;
+  color: #ffffff;
+}
+
+.btn-primary-vfs {
+  color: #ffffff;
+  padding: .5rem .75rem;
+  border-radius: .375rem;
+  border: none;
+  background: #ff5400;
+}
+
+
+.btn-primary-vfs:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.right-col {
+  width: 60%;
+  box-sizing: border-box;
+}
+
+/* Accordion container full-side border */
+
+/* Accordion container full-side border (targets actual markup: #accordion) */
+.right-col #accordion {
+  border: 1.5px solid #c1c1c1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: block;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+/* Remove Tailwind vertical spacing (space-y-2) gaps */
+.right-col #accordion > div {
+  margin-top: 0;
+  border: none; /* rely on container border */
+  border-bottom: 1px solid #e6e6e6;
+  border-radius: 0;
+}
+
+.right-col #accordion > div:last-child {
+  border-bottom: none;
+}
+
+.right-col #accordion > div > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Rounded top corners on first button */
+.right-col #accordion > div:first-child > button {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Rounded bottom corners on last content panel */
+.right-col #accordion > div:last-child > div {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Accordion typography: set buttons and content to 14px */
+.right-col #accordion > div > button,
+.right-col #accordion > div > button span,
+.right-col #accordion .acc-title,
+.right-col #accordion .accordion-body,
+.right-col #accordion .accordion-body p {
+  font-size: 14px;
+  line-height: 1.25;
+  color: #3C4043;
+}
+
+/* Timeline (steps) inside accordion content */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.timeline-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  /* border-bottom: 1px solid #f3f4f6; */
+}
+.timeline-item:last-child {
+  border-bottom: none;
+}
+.timeline-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+.timeline-label {
+  font-size: 14px;
+  color: #3C4043;
+}
+
+.acc-title {
+  font-weight: 600;
+  color: #3C4043;
+}
+
+.site-footer {
+  background: #fff;
+}
+
+.footer-message {
+  padding: 0.5rem 0;
+}
+
+.footer-links a {
+  color: #1F73BA;
+}
+
+.footer-copy {
+  color: #5F6368;
+}
+
+/* Logo using content and fallback background */
+.logo {
+  display: block;
+  height: 3.325rem;
+  width: 100%;
+  background-image: url('/vfs.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+}
+
+.mt-8.border.border-gray-300.rounded-lg.p-5.w-full.flex.gap-6.items-start {
+    border-radius: 0;
+    width: 300px;
+    height: 65px;
+    align-items: center;
+}
+
+label.cursor-pointer.select-none  span {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 17px;
+    letter-spacing: normal;
+}
+
+/* Cloudflare-style checkbox */
+input#cf-checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  background: #000;
+  border: 1px solid gray;
+  display: inline-block;
+  vertical-align: middle;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input#cf-checkbox:checked {
+  background: #06345b;
+  border-color: #06345b;
+}
+
+/* Success icon colors: green background, white check */
+#success-i .success-circle {
+  stroke: #2db35e !important;
+  fill: #2db35e !important;
+}
+
+#success-i .p1 {
+  stroke: #ffffff !important;
+  stroke-width: 2 !important;
+  fill: none !important;
+}
+
+.flex.gap-4.mt-6 {
+    position: absolute;
+    width: 300px;
+    left: 30px;
+    top: 90%;
+}
+
