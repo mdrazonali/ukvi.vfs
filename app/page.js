@@ -34,7 +34,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex flex-1 main-content">
         {/* Left Side - Form */}
-        <div className="w-1/2 p-8 border-r border-gray-200 left-col" style={{ height: '413px !important'}}>
+        <div className="w-1/2 p-8 border-r border-gray-200 left-col" style={{ height: '413px'}}>
           <Form 
             onSubmit={handleFormSubmit} 
             onClear={handleFormClear} 
@@ -82,6 +82,34 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <style> 
+            @media screen and (max-width: 768px){
+  .main-content {
+    flex-direction: column;
+  }
+
+  .left-col {
+      height: 491px !important;
+  }
+
+  element.style {
+      top: 72%;
+  }
+
+  .right-col {
+      width: 100%;
+      padding: 2rem 0px;
+  }
+
+  .left-col {
+      padding: 1.5rem;
+  }
+
+  .mt-8.border.border-gray-300.p-2.py-3.w-75.flex.gap-2.items-center {
+      width: 280px;
+  }
+}
+            </style>
     </div>
   );
 }
