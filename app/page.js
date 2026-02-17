@@ -34,7 +34,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex flex-1 main-content">
         {/* Left Side - Form */}
-        <div className="w-1/2 p-8 border-r border-gray-200 left-col">
+        <div className="w-1/2 p-8 border-r border-gray-200 left-col" style={{ height: '413px !important'}}>
           <Form 
             onSubmit={handleFormSubmit} 
             onClear={handleFormClear} 
